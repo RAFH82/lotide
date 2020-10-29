@@ -20,6 +20,6 @@ const countLetters = (string) => {
   return(results);
 };
 
-countLetters("lighthouse in the house");
+const result = countLetters("ryannn");
 
-assertEqual(countLetters('ryannn')['n'],3);
+assertEqual(result['n'],3);
