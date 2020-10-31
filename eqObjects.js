@@ -14,6 +14,13 @@ const eqArrays = (array1, array2) => {
         return false;
       }
     }
+    if (!Array.isArray(array1[i]) && !Array.isArray(array2[i])) {
+      if (array1[i] instanceof Object && array2[i] instanceof Object) {
+        if (!eqObjects(array1[i], array2[i])) {
+          return false;
+        }
+      }
+    }
       else {
       if (array1[i] !== array2[i]) {
         return false;
@@ -62,8 +69,8 @@ const abc = { a: "1", b: "2", c: "3" };
 assertEqual(eqObjects(ab, abc), false); // => false
 // console.log(eqObjects(ab, abc));
 
-const cd = { d: ["2", 3], c: 1 };
-const dc = { c: 1, d: ["2", 3] };
+const cd = { d: ["2", 3, {z:1}], c: 1 };
+const dc = {c: 1, d: ["2", 3, {z:1}] };
 // // console.log(eqObjects(cd, dc));
 assertEqual(eqObjects(cd, dc), true); // => true
 
@@ -79,4 +86,3 @@ assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false
 assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false) // => false
 
 assertEqual(eqObjects({ a: {b: {c: {d: 1, e: 2}, f: 5, j:{ k: 5}}}, x: 5}, { a: {b: {c: {d: 1, e: 2}, f: 5, j:{ k: 5}}}, x: 5}), true); // => true
-
