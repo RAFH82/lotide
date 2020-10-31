@@ -35,11 +35,13 @@ const eqObjects = function(object1, object2) {
         return false;
       }
     }
-    if (!Array.isArray(object1[key]) && !Array.isArray(object2[key])) {
-      if (!eqObjects(object1[key], object2[key])) {
-        return false;
+    //if (!Array.isArray(object1[key]) && !Array.isArray(object2[key])) {
+      if (object1[key] instanceof Object && object2[key] instanceof Object) {
+        if (!eqObjects(object1[key], object2[key])) {
+          return false;
+        }
       }
-    }
+    //}
     else {
       if (object1[key] !== object2[key]) { // compares the objects key values against each other
         return false;
@@ -49,32 +51,32 @@ const eqObjects = function(object1, object2) {
   return true;
 };
 
-// const ab = { a: "1", b: "2" };
-// const ba = { b: "2", a: "1" };
+const ab = { a: "1", b: "2" };
+const ba = { b: "2", a: "1" };
 
-// assertEqual(eqObjects(ab, ba), true); // => true
+assertEqual(eqObjects(ab, ba), true); // => true
 // console.log(eqObjects(ab, ba));
 
-// const abc = { a: "1", b: "2", c: "3" };
+const abc = { a: "1", b: "2", c: "3" };
 
-// assertEqual(eqObjects(ab, abc), false); // => false
+assertEqual(eqObjects(ab, abc), false); // => false
 // console.log(eqObjects(ab, abc));
 
 const cd = { d: ["2", 3], c: 1 };
 const dc = { c: 1, d: ["2", 3] };
-// console.log(eqObjects(cd, dc));
-// assertEqual(eqObjects(cd, dc), true); // => true
+// // console.log(eqObjects(cd, dc));
+assertEqual(eqObjects(cd, dc), true); // => true
 
-// const cd2 = { c: "1", d: ["2", 3, 4] };
-// assertEqual(eqObjects(cd, cd2), false); // => false
+const cd2 = { c: "1", d: ["2", 3, 4] };
+assertEqual(eqObjects(cd, cd2), false); // => false
 
-console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
 
-console.log(eqObjects({ a: { z: {x: 2}, }, b: 2 }, { a: { z: {x: 2}, }, b: 2 })); // => true
+assertEqual(eqObjects({ a: { z: {x: 2}, }, b: 2 }, { a: { z: {x: 2}, }, b: 2 }), true); // => true
 
-console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })) // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false) // => false
 
-console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })) // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false) // => false
 
-console.log(eqObjects({ a: {b: {c: {d: 1, e: 2}, f: 5, j:{ k: 5}}}, x: 5}, { a: {b: {c: {d: 1, e: 2}, f: 5, j:{ k: 5}}}, x: 5})); // => true
+assertEqual(eqObjects({ a: {b: {c: {d: 1, e: 2}, f: 5, j:{ k: 5}}}, x: 5}, { a: {b: {c: {d: 1, e: 2}, f: 5, j:{ k: 5}}}, x: 5}), true); // => true
 
