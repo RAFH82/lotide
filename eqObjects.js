@@ -69,8 +69,8 @@ const abc = { a: "1", b: "2", c: "3" };
 assertEqual(eqObjects(ab, abc), false); // => false
 // console.log(eqObjects(ab, abc));
 
-const cd = { d: ["2", 3, {z:1}], c: 1 };
-const dc = {c: 1, d: ["2", 3, {z:1}] };
+const cd = { d: ["2", 3, {z: 1, d: [4]}], c: 1 };
+const dc = {c: 1, d: ["2", 3, {z: 1, d: [4]}] };
 // // console.log(eqObjects(cd, dc));
 assertEqual(eqObjects(cd, dc), true); // => true
 
