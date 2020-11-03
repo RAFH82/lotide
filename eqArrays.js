@@ -6,6 +6,13 @@ const eqArrays = (array1, array2) => {
         return false;
       }
     }
+    if (!Array.isArray(array1[i]) && !Array.isArray(array2[i])) {
+      if (array1[i] instanceof Object && array2[i] instanceof Object) {
+        if (!eqObjects(array1[i], array2[i])) {
+          return false;
+        }
+      }
+    }
       else {
       if (array1[i] !== array2[i]) {
         return false;

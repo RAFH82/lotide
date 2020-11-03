@@ -30,20 +30,4 @@ const flatten = (array) => {
   console.log(flattenedArray);
 };
 
-flatten([1, 2, [3, 4], 5, [6]]); // => [1, 2, 3, 4, 5, 6]
-flatten([[1, 2], 3, 12, [6, 7]]);
-flatten(["a", 1, ["a", 7, "f", 9]]);
-
-// Ben's version
-// const flatten = (arr) => {
-//   let flattenedArr = [];
-//   for (let i = 0; i < arr.length; i++) {
-//     if (Array.isArray(arr[i])) {
-//       flattenedArr = flattenedArr.concat(arr[i]);
-//     } else {
-//       flattenedArr.push(arr[i]);
-//     }
-//   }
-//   return flattenedArr;
-// };
-
+module.exports = flatten;
