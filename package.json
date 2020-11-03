@@ -1,5 +1,5 @@
 {
-  "name": @RAFH82/lotide,
+  "name": "@rafh82/lotide",
   "version": "1.0.0",
   "description": "utility functions based off of the lodash library",
   "main": "index.js",
