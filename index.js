@@ -15,10 +15,11 @@ const countLetters = require('./countLetters');
 const assertObjectsEqual = require('./assertObjectsEqual');
 const assertArraysEqual = require('./assertArraysEqual');
 const assertEqual = require('./assertEqual');
+const letterPositions = require('./letterPositions');
 
 // object containting exports
 module.exports = {
-  
+
   head,
   tail,
   middle,
@@ -35,5 +36,6 @@ module.exports = {
   assertObjectsEqual,
   assertArraysEqual,
   assertEqual,
+  letterPositions
 
 };
